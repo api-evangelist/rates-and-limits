@@ -1,0 +1,57 @@
+name: Rates and Limits
+description: >-
+  A free, keyless open-data publisher exposing US federal and state tax, payroll, benefits, and wage figures as JSON.
+  Every figure ships bundled with provenance: the exact quoted sentence from the governing government document, byte
+  offsets, sha256-stamped source snapshots, and last-verified dates.
+url: https://raw.githubusercontent.com/api-evangelist/rates-and-limits/refs/heads/main/apis.yml
+created: '2026-09-14'
+modified: '2026-09-14'
+specificationVersion: '0.21'
+tags:
+  - tax
+  - payroll
+  - benefits
+  - irs
+  - minimum-wage
+  - open-data
+  - government
+  - compliance
+  - fintech
+  - hr
+  - reference-data
+  - json
+  - llms-txt
+apis:
+  - name: Rates and Limits JSON API
+    description: >-
+      Keyless, unauthenticated REST-style JSON API serving US tax, payroll, benefits, and wage figures with bundled
+      provenance. Includes a self-describing catalog (index.json) and a bulk current-figures endpoint (latest.json).
+    humanURL: https://ratesandlimits.com/api/
+    baseURL: https://ratesandlimits.com/api/v1/
+    tags:
+      - tax
+      - payroll
+      - benefits
+      - irs
+      - minimum-wage
+      - open-data
+      - government
+      - compliance
+      - fintech
+      - hr
+      - reference-data
+      - json
+      - llms-txt
+    properties:
+      - type: Documentation
+        url: https://ratesandlimits.com/api/
+      - type: LLMsTxt
+        url: https://ratesandlimits.com/llms.txt
+maintainers:
+  - FN: Rates and Limits
+    url: https://ratesandlimits.com/
+generated:
+  by: apis.io/add
+  model: claude-opus-4-8
+  confidence: 95
+  at: '2026-09-14T05:41:52.039Z'
