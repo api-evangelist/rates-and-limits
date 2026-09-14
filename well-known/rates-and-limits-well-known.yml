@@ -1,0 +1,30 @@
+generated: '2026-09-14'
+method: probed
+source: live probes of /.well-known/* on ratesandlimits.com
+note: >-
+  Every /.well-known path probed returned 404 (HTML not-found page). No WellKnown
+  or SecurityTxt pointer is emitted because the provider serves none of these
+  documents. Recorded absence is valid data. ratesandlimits.com is a keyless,
+  unauthenticated open-data site, so OAuth/OIDC discovery documents are expected
+  to be absent.
+hosts:
+  - host: ratesandlimits.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null

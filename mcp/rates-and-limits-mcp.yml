@@ -1,0 +1,62 @@
+generated: '2026-09-14'
+method: derived
+source: >-
+  Derived from the documented endpoint templates in
+  https://ratesandlimits.com/api/v1/index.json . No hosted or local MCP server
+  is published by the provider.
+status: candidate
+summary: >-
+  No official MCP server exists. This is a DERIVED candidate tool list mapped
+  from the five documented, keyless JSON endpoints, offered as a shape a server
+  could take. No endpoint URL is asserted as an MCP surface.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: none
+  verified: derived
+tools:
+  - name: list_programs
+    description: Return the catalog of every published program, its years/states, and endpoints.
+    backing_endpoint: /api/v1/index.json
+    inputSchema:
+      type: object
+      properties: {}
+  - name: get_latest_figures
+    description: Return every program's current in-force figures with evidence, in one response.
+    backing_endpoint: /api/v1/latest.json
+    inputSchema:
+      type: object
+      properties: {}
+  - name: get_program
+    description: Return every year of one program.
+    backing_endpoint: /api/v1/{program}.json
+    inputSchema:
+      type: object
+      required: [program]
+      properties:
+        program: { type: string, description: Program slug, e.g. 401k-contribution-limit }
+  - name: get_record
+    description: Return one program's record for one year.
+    backing_endpoint: /api/v1/{program}/{year}.json
+    inputSchema:
+      type: object
+      required: [program, year]
+      properties:
+        program: { type: string }
+        year: { type: integer }
+  - name: get_state_record
+    description: Return one record of a state-level program for one state and year.
+    backing_endpoint: /api/v1/{program}/{state}/{year}.json
+    inputSchema:
+      type: object
+      required: [program, state, year]
+      properties:
+        program: { type: string }
+        state: { type: string }
+        year: { type: integer }
+notes:
+  - >-
+    A real server for this data would be trivial to host given the keyless
+    static endpoints, but none is published; mode is none by design.

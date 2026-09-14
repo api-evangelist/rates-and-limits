@@ -1,0 +1,78 @@
+generated: '2026-09-14'
+method: derived
+source: >-
+  Derived from https://ratesandlimits.com/api/v1/index.json and live program /
+  record responses (e.g. /api/v1/401k-catch-up-contribution/2026.json)
+summary: >-
+  Entity-relationship graph for the Rates and Limits JSON API, derived from the
+  self-describing catalog and observed record documents. The API has no $ref
+  schema, so relationships are derived from the nesting and id-reference fields
+  present in real responses.
+entities:
+  - name: program
+    description: A published figure series (e.g. 401(k) Catch-Up Contribution).
+    key: program
+    fields: [program, name, category, agency, dimension, years, states, page_url, api_url, verified_through]
+    endpoint: /api/v1/{program}.json
+  - name: record
+    description: One program observed for one year (and one state, for state-year programs).
+    key: [program, year, state]
+    fields: [program, name, category, agency, year, state, status, effective_date, date_basis, verified_at, published_at, canonical_url, figures, schedule, explainers]
+    endpoint: /api/v1/{program}/{year}.json
+    state_endpoint: /api/v1/{program}/{state}/{year}.json
+  - name: figure
+    description: A single numeric claim within a record, with its own evidence.
+    key: key
+    fields: [key, label, value, format, formatted, scope, derived, quote, offset, source, estimate]
+  - name: source
+    description: The government document a figure was read from, with an immutable snapshot.
+    key: sha256_text
+    fields: [url, title, publisher, fetched_at, sha256_text, snapshot_url]
+  - name: explainer
+    description: Plain-language notes attached to a record.
+    fields: [key, heading, body]
+  - name: category
+    description: Subject grouping a program belongs to.
+    values: [brackets-and-rates, deductions-and-credits, estate-and-gift, health-accounts, mileage-and-misc, payroll-and-wages, retirement-limits]
+  - name: agency
+    description: Publishing government agency cited as the source authority.
+    values: [IRS, SSA, DOL, CMS, GSA]
+relationships:
+  - from: record
+    to: program
+    type: belongs_to
+    via: program
+  - from: program
+    to: record
+    type: has_many
+    via: years (and states for state-year programs)
+  - from: record
+    to: figure
+    type: has_many
+    via: figures[]
+  - from: figure
+    to: source
+    type: has_one
+    via: source
+  - from: record
+    to: explainer
+    type: has_many
+    via: explainers[]
+  - from: program
+    to: category
+    type: belongs_to
+    via: category
+  - from: program
+    to: agency
+    type: belongs_to
+    via: agency
+dimensions:
+  year: 53 programs
+  state-year: 2 programs (minimum-wage, tipped-minimum-wage)
+counts:
+  programs: 55
+  records: 1163
+notes:
+  - >-
+    A figure with derived=true carries no quote and instead an estimate block
+    naming the formula and its inputs, each evidenced normally.

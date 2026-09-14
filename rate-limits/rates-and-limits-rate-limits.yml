@@ -1,0 +1,20 @@
+generated: '2026-09-14'
+method: searched
+source: https://ratesandlimits.com/api/
+summary: >-
+  The provider explicitly documents that there is NO rate limit. The API docs
+  state "Everything this site publishes is available as JSON, free, with no key
+  and no rate limit," and llms.txt repeats "a free JSON API with no key and no
+  rate limit." No X-RateLimit-*/RateLimit-*/Retry-After headers are advertised
+  and no 429 behavior is documented. This is an honest zero, not an unmeasured
+  gap.
+limit_count: 0
+rate_limit_headers: []
+exhaustion_status: null
+notes:
+  - >-
+    Provider guidance for high-volume consumers is to fetch latest.json once
+    (the whole current figure set in one request) rather than walking the
+    catalog program-by-program.
+  - Content is served as static JSON documents, so throughput is bounded by the
+    CDN/host, not by a published quota.

@@ -1,0 +1,39 @@
+generated: '2026-09-14'
+method: searched
+source: >-
+  https://ratesandlimits.com/api/ , https://ratesandlimits.com/changes ,
+  https://ratesandlimits.com/corrections , https://ratesandlimits.com/methodology
+  and /api/v1/index.json
+summary: >-
+  Rates and Limits versions its API in the URI path (v1) and publishes a
+  freshness signal rather than a deprecation/sunset policy. Each program and the
+  catalog carry a verified_through / verified_at date recording when the figure
+  was last checked against its government source. There is no published Sunset
+  or Deprecation header scheme and no formal SLA or status page.
+versioning:
+  scheme: uri-path
+  current: v1
+freshness:
+  field: verified_through / verified_at
+  catalog_verified_through: '2026-09-04'
+  note: >-
+    Every figure records the date it was last verified against the exact
+    government document it was read from. This is the provider's decay signal in
+    place of a versioned changelog.
+change_tracking:
+  changes_page: https://ratesandlimits.com/changes
+  corrections_page: https://ratesandlimits.com/corrections
+  note: >-
+    /changes lists figures that moved recently (each against the prior year);
+    /corrections publishes every correction to a published figure and what it
+    was corrected from. These track the DATA, not the API contract.
+deprecation:
+  policy: none-published
+  sunset_header: false
+sla:
+  published: false
+status_page:
+  present: false
+notes:
+  - No deprecated operations exist (single active v1 surface).
+  - Source snapshots are immutable and are stated never to change or disappear.

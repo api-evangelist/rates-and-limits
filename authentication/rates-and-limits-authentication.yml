@@ -1,0 +1,16 @@
+generated: '2026-09-14'
+method: searched
+source: https://ratesandlimits.com/api/ (API docs) and llms.txt
+summary: >-
+  No authentication. Rates and Limits is a fully keyless, unauthenticated
+  open-data JSON API. The provider states plainly: "Everything this site
+  publishes is available as JSON, free, with no key and no rate limit." There
+  are no API keys, no OAuth, no tokens, and no accounts. Every endpoint is a
+  public HTTP GET.
+schemes: []
+auth_required: false
+keyless: true
+notes:
+  - No securityScheme is declared or required on any endpoint.
+  - No sign-up, no developer account, and no credential provisioning exists.
+  - Requests are ordinary HTTPS GETs against static JSON documents.

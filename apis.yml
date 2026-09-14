@@ -7,6 +7,11 @@ url: https://raw.githubusercontent.com/api-evangelist/rates-and-limits/refs/head
 created: '2026-09-14'
 modified: '2026-09-14'
 specificationVersion: '0.21'
+x-enrichment:
+  date: '2026-09-14'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v3
 tags:
   - tax
   - payroll
@@ -45,8 +50,32 @@ apis:
     properties:
       - type: Documentation
         url: https://ratesandlimits.com/api/
+      - type: APIReference
+        url: https://ratesandlimits.com/api/
       - type: LLMsTxt
         url: https://ratesandlimits.com/llms.txt
+      - type: TermsOfService
+        url: https://ratesandlimits.com/terms
+      - type: PrivacyPolicy
+        url: https://ratesandlimits.com/privacy
+      - type: Support
+        url: https://ratesandlimits.com/contact
+      - type: Authentication
+        url: authentication/rates-and-limits-authentication.yml
+      - type: Conventions
+        url: conventions/rates-and-limits-conventions.yml
+      - type: RateLimits
+        url: rate-limits/rates-and-limits-rate-limits.yml
+      - type: Plans
+        url: plans/rates-and-limits-plans-pricing.yml
+      - type: Components
+        url: components/rates-and-limits-components.yml
+      - type: DataModel
+        url: data-model/rates-and-limits-data-model.yml
+      - type: Lifecycle
+        url: lifecycle/rates-and-limits-lifecycle.yml
+      - type: MCPServer
+        url: mcp/rates-and-limits-mcp.yml
 maintainers:
   - FN: Rates and Limits
     url: https://ratesandlimits.com/
@@ -55,3 +84,8 @@ generated:
   model: claude-opus-4-8
   confidence: 95
   at: '2026-09-14T05:41:52.039Z'
+common:
+- type: Website
+  url: https://ratesandlimits.com/
+- type: DomainSecurity
+  url: security/rates-and-limits-domain-security.yml

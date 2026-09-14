@@ -1,0 +1,36 @@
+generated: '2026-09-14'
+method: searched
+source: https://ratesandlimits.com/api/
+summary: >-
+  Rates and Limits publishes one embeddable client-side component: a figure
+  card that renders one program's current figures inside a host page, following
+  the reader's light/dark preference. It is loaded by a small async loader
+  script served from the provider's own origin. Distinct from an SDK: it is a
+  drop-in UI widget, not a client library.
+families:
+  - name: Figure card embed
+    kind: embeddable-widget
+    description: >-
+      A card showing one program's current figures, styled to sit inside a host
+      page. It loads nothing from anywhere but ratesandlimits.com, sets no
+      cookie, and reports nothing back. A linked fallback paragraph remains
+      useful when JavaScript is unavailable or the page is read via RSS.
+    markup: >-
+      <p class="ratesandlimits-embed" data-program="hsa-contribution-limit"
+      data-year="2026">...</p>
+    attributes:
+      - data-program
+      - data-year
+loaders:
+  - name: Rates and Limits embed loader
+    url: https://ratesandlimits.com/embed/v1/loader.js
+    registry: cdn
+    version: null
+    published: null
+    note: >-
+      First-party async loader (~2.3KB, plain JS, no dependencies). Distributed
+      from the provider origin at a v1 path; not pinned to a semver, so a
+      consumer cannot address a specific immutable build. The provider invites
+      reading the script before embedding it.
+    content_type: text/javascript
+    http_status: 200

@@ -1,0 +1,68 @@
+generated: '2026-09-14'
+method: derived
+source: >-
+  https://ratesandlimits.com/api/ , https://ratesandlimits.com/api/v1/index.json ,
+  and observed responses from the live JSON API
+summary: >-
+  Cross-cutting runtime semantics for the Rates and Limits keyless JSON API. The
+  surface is entirely read-only (HTTP GET over static JSON documents), keyless,
+  path-versioned at /api/v1/, and rate-limit free. Every figure carries its own
+  evidence bundle (quote, byte offset, sha256 of the source snapshot, and a
+  last-verified date).
+auth:
+  style: none
+  keyless: true
+versioning:
+  style: uri-path
+  current: v1
+  example: https://ratesandlimits.com/api/v1/index.json
+pagination:
+  style: none
+  note: >-
+    No pagination. Collections are served whole. latest.json returns every
+    program's current figures in a single document; index.json is the full
+    catalog.
+content_type: application/json; charset=utf-8
+discovery:
+  catalog: https://ratesandlimits.com/api/v1/index.json
+  note: >-
+    index.json is a self-describing catalog listing every program, its years,
+    its states (where applicable), and endpoint templates. It is not an OpenAPI
+    document but functions as a machine-readable discovery contract.
+endpoint_templates:
+  - catalog: /api/v1/index.json
+  - latest: /api/v1/latest.json
+  - program: /api/v1/{program}.json
+  - record: /api/v1/{program}/{year}.json
+  - state_record: /api/v1/{program}/{state}/{year}.json
+error_handling:
+  note: >-
+    Unknown API paths return the site's HTML 404 page (Astro static site), not a
+    structured JSON error envelope. No RFC 9457 problem+json is used.
+rate_limit_signaling:
+  present: false
+  note: No rate limit and no rate-limit response headers. See rate-limits/.
+evidence_fields:
+  note: >-
+    Each figure object carries key, label, value, format, formatted, scope,
+    derived, quote, offset, and a source block (url, title, publisher,
+    fetched_at, sha256_text, snapshot_url). A figure with "derived": true has no
+    quote and instead carries an estimate block naming its formula and inputs.
+  verification: >-
+    A consumer can fetch snapshot_url, sha256-hash it against sha256_text, seek
+    to offset, and read quote.length characters to independently confirm the
+    figure. Snapshots are immutable.
+idempotency:
+  coverage: na
+  note: >-
+    Read-only API. All operations are HTTP GET; there is no mutating surface, so
+    replay protection is not applicable.
+reversibility:
+  applicable: false
+  grade: na
+  note: >-
+    Read-only API with no write surface. There is nothing to reverse, so
+    reversibility is not applicable.
+dry_run_mode:
+  supported: na
+  note: Read-only API; no state-changing calls to rehearse.

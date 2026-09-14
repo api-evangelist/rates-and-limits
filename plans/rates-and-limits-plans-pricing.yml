@@ -1,0 +1,23 @@
+generated: '2026-09-14'
+method: searched
+source: https://ratesandlimits.com/api/ and https://ratesandlimits.com/terms
+summary: >-
+  Rates and Limits publishes no paid plans. The entire JSON API, the source
+  snapshots, and the embeddable figure cards are free, keyless, and rate-limit
+  free. There is no billing, no tiers, and no upgrade path. Use is free
+  including commercially, subject only to an attribution requirement (link back
+  and do not strip the evidence fields).
+plan_count: 0
+pricing_model: free
+currency: null
+plans: []
+license:
+  name: Attribution required
+  summary: >-
+    Free to use, including commercially. Attribute this site and link back. Do
+    not strip the evidence fields and then present the figures as sourced from
+    here.
+  source: https://ratesandlimits.com/api/v1/index.json
+notes:
+  - No "contact sales" enterprise gate exists; the free surface is the whole
+    product.
