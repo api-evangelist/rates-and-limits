@@ -13,6 +13,20 @@ x-enrichment:
   artifacts_added: 11
   pass: local-v3
 tags:
+  - Tax
+  - Payroll
+  - Benefits
+  - IRS
+  - minimum-wage
+  - Open Data
+  - Government
+  - Compliance
+  - Fintech
+  - HR
+  - Reference Data
+  - JSON
+  - llms-txt
+tags_raw:
   - tax
   - payroll
   - benefits
@@ -34,6 +48,20 @@ apis:
     humanURL: https://ratesandlimits.com/api/
     baseURL: https://ratesandlimits.com/api/v1/
     tags:
+      - Tax
+      - Payroll
+      - Benefits
+      - IRS
+      - minimum-wage
+      - Open Data
+      - Government
+      - Compliance
+      - Fintech
+      - HR
+      - Reference Data
+      - JSON
+      - llms-txt
+    tags_raw:
       - tax
       - payroll
       - benefits
